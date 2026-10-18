@@ -109,6 +109,21 @@ API requests accept loopback names, IP literals, the selected bind hostname, and
 
 Full details, including the recovery threat model: [docs/authentication.md](./docs/authentication.md).
 
+## Weekly account limits
+
+The top-right **Weekly** indicator shows remaining weekly quota for connected
+accounts instead of session token counts and cost. Click it to see each account,
+its weekly limits, and provider-reported reset times. When an account has several
+weekly limits, the header shows the lowest remaining percentage; the panel keeps
+the individual limits separate. On narrow screens the header shows one account
+and a count of the others.
+
+Usage comes from omp's provider usage API, with its existing cache and OAuth
+refresh handling. The browser checks once a minute while visible and after
+account settings change. Missing usage and providers without weekly limits are
+shown explicitly, never as zero or unlimited quota. Session statistics remain
+available through `/session`.
+
 ## Model roles
 
 omp does not have "the" model — it has a model per **scope of work**, and omp-web exposes the same roles the TUI's `/model` selector and `Ctrl+P` cycle use:
